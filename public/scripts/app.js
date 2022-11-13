@@ -1,7 +1,34 @@
 "use strict";
 
-var testa = function testa() {
-    return "test a";
-};
+var template = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    "Indecision App! "
+  ),
+  React.createElement(
+    "p",
+    null,
+    "This is some info"
+  ),
+  React.createElement(
+    "ol",
+    null,
+    React.createElement(
+      "li",
+      null,
+      "Item One"
+    ),
+    React.createElement(
+      "li",
+      null,
+      "Item Two"
+    )
+  )
+);
 
-console.log(testa());
+var appRoot = document.getElementById("app");
+
+ReactDOM.render(template, appRoot);
