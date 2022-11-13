@@ -1,0 +1,12 @@
+{
+  "name": "react_indecision",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SohamE/React_Indecision.git",
+  "author": "SohamE <soham.584sengupta@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}
