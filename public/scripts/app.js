@@ -1,89 +1,45 @@
 "use strict";
 
-var app = {
-  title: "Indecision App!",
-  desc: "This is some info.",
-  options: []
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var formSubmit = function formSubmit(e) {
-  e.preventDefault();
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var option = e.target.elements.option.value;
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = "";
-    renderApp();
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
   }
-};
 
-var removeAll = function removeAll() {
-  app.options = [];
-  renderApp();
-};
+  _createClass(Header, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "p",
+        null,
+        "This is from Header"
+      );
+    }
+  }]);
 
-var onMakeDecision = function onMakeDecision() {
-  var rand = Math.floor(Math.random() * app.options.length);
-  var option = app.options[rand];
-  alert(option);
-};
+  return Header;
+}(React.Component);
 
-var appRoot = document.getElementById("app");
-
-var renderApp = function renderApp() {
-  var template = React.createElement(
-    "div",
+var jsx = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
     null,
-    React.createElement(
-      "h1",
-      null,
-      app.title
-    ),
-    React.createElement(
-      "p",
-      null,
-      app.desc
-    ),
-    React.createElement(
-      "p",
-      null,
-      app.options.length > 0 ? "Here are your options" : "There are no options"
-    ),
-    React.createElement(
-      "p",
-      null,
-      app.options.length
-    ),
-    React.createElement(
-      "button",
-      { disabled: app.options.length == 0, onClick: onMakeDecision },
-      "What should I do?"
-    ),
-    React.createElement(
-      "button",
-      { onClick: removeAll },
-      "Remove All"
-    ),
-    React.createElement(
-      "ol",
-      null,
-      app.options.map(function (option) {
-        return React.createElement(
-          "li",
-          { key: option },
-          option
-        );
-      })
-    ),
-    React.createElement(
-      "form",
-      { onSubmit: formSubmit },
-      React.createElement("input", { type: "text", name: "option" }),
-      React.createElement("input", { type: "submit" })
-    )
-  );
+    "Title"
+  ),
+  React.createElement(Header, null)
+);
 
-  ReactDOM.render(template, appRoot);
-};
-
-renderApp();
+ReactDOM.render(jsx, document.getElementById("app"));
