@@ -7,7 +7,7 @@ const app = {
 const formSubmit = (e) => {
   e.preventDefault();
 
-  const option = e.target.elements.option;
+  const option = e.target.elements.option.value;
   if (option) {
     app.options.push(option);
     e.target.elements.option.value = "";
@@ -18,6 +18,12 @@ const formSubmit = (e) => {
 const removeAll = () => {
     app.options = [];
     renderApp();
+}
+
+const onMakeDecision = () => {
+  const rand = Math.floor(Math.random() * app.options.length);
+  const option = app.options[rand];
+  alert(option);
 }
 
 var appRoot = document.getElementById("app");
@@ -33,10 +39,10 @@ const renderApp = () => {
           : "There are no options"}
       </p>
       <p>{app.options.length}</p>
-      <button onClick={removeAll}>Remove All</button>
+      <button disabled={app.options.length == 0} onClick={onMakeDecision}>What should I do?</button>
+      <button onClick={removeAll}>Remove All</button> 
       <ol>
-        <li>Item One</li>
-        <li>Item Two</li>
+      {app.options.map((option) => <li key={option}>{option}</li>)}
       </ol>
       <form onSubmit={formSubmit}>
         <input type="text" name="option" />
